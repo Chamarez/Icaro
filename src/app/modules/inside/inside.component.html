@@ -3,11 +3,21 @@
   <app-navbar></app-navbar>
 
 </div>
-<div class="main">
-  <div class="contenedor">
 
-     <!-- <app-mensajes></app-mensajes> -->
-    <app-received></app-received>
+<!-- <app-received
+(enviar)="showenviar($event)"
+></app-received> -->
+
+
+<div class="main">
+  <div class="container">
+
+
+
+
+    <app-received *ngIf="receiv" (enviar)="showsend($event)"></app-received>
+    <app-sended *ngIf='send'></app-sended>
+
   </div>
 
 </div>

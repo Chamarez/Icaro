@@ -5,6 +5,7 @@ body#tren{
  }
 
 .container{
+
   display: flex;
   width: cover;
   height: 80%;
@@ -74,9 +75,9 @@ textarea{
   max-width: 25%;
 }
 
-.msj{
+/* .msj{
   max-height: 144px;
-}
+} */
  .acento{
   color:rgb(255, 106, 0) !important;
 }
@@ -98,8 +99,8 @@ textarea{
 
 #Mensaje, #Mensaje1{
   min-width: 260px;
-  width: 58%;
   max-width: 100%;
+
 
 }
 

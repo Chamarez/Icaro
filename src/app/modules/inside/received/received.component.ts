@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { EventEmitter, Input } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 
 
@@ -8,33 +9,23 @@ import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms'
   styleUrls: ['./received.component.scss']
 })
 export class ReceivedComponent implements OnInit {
-  form: FormGroup;
 
-  constructor(private fb: FormBuilder) {
-    this.form = this.fb.group({
-      usuario: ['', Validators.required],
-      password: ['', Validators.required]
-    })
+  sen  =
+    {
+      send: true,
+      receiv: false
+    };
+
+
+    @Output() enviar: EventEmitter<any> =  new EventEmitter<any>();
+
+  constructor() {
+
   }
 
   ngOnInit(): void {
   }
 
-  private buildForm() {
-    this.form = new FormGroup({
-      apellido: new FormControl('', [Validators.required]),
-      nombre: new FormControl('', [Validators.required]),
-      usuario: new FormControl('', [Validators.required]),
-      password: new FormControl('', [Validators.required]),
-      cpasword: new FormControl('', [Validators.required]),
-    });
-    this.form.valueChanges
-    .subscribe(value => {
-      console.log(value);
-    });
-
-
-  }
 
 
   isMobile(){
@@ -46,5 +37,14 @@ export class ReceivedComponent implements OnInit {
         (navigator.userAgent.match(/iPad/i)) ||
         (navigator.userAgent.match(/BlackBerry/i))
         );}
+
+
+    sended(){
+      this.sen
+      this.enviar.emit(this.sen);
+
+  }
+
+
 
 }
