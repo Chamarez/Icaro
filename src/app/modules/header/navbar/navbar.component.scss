@@ -184,6 +184,7 @@ li {
 .toolbar{
   margin: 0px;
   padding: 0%;
+
 }
 .mat-toolbar{
   background-color: #3f51b5!important;
@@ -201,4 +202,7 @@ li {
   width: 200px;
   height: 50px;
   padding-top: 13px;
+}
+#navbarResponsive{
+  justify-content:flex-end;
 }
