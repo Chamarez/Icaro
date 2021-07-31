@@ -9,25 +9,35 @@
         <div class="formcontainer">
           <img src="../../../assets/usuario.png" alt="ImagenUser" width="50%" />
           <form [formGroup]="form">
-            <mat-form-field class="ancho" appearance="fill">
+            <mat-form-field class="ancho" appearance="fill" >
               <mat-label>Apellido</mat-label>
-              <input matInput />
+              <input matInput
+              formControlName="apellido"
+              placeholder="Ingrese su apellido"/>
             </mat-form-field>
             <mat-form-field class="ancho" appearance="fill">
               <mat-label>Nombre</mat-label>
-              <input matInput />
+              <input matInput
+              formControlName="nombre"
+              placeholder="Ingrese su nombre"/>
             </mat-form-field>
             <mat-form-field class="ancho" appearance="fill">
               <mat-label>Nombre de Usuario</mat-label>
-              <input matInput />
+              <input matInput
+              formControlName="usuario"
+              placeholder="Ingrese su nombre de usuario"/>
             </mat-form-field>
             <mat-form-field class="ancho" appearance="fill">
               <mat-label>Contraseña</mat-label>
-              <input matInput />
+              <input matInput
+              formControlName="password"
+              placeholder="Ingrese su password" />
             </mat-form-field>
             <mat-form-field class="ancho" appearance="fill">
               <mat-label>Confirmar contraseña</mat-label>
-              <input matInput />
+              <input matInput
+              formControlName="cpasword"
+              placeholder="reingrese su password" />
             </mat-form-field>
             <mat-form-field class="ancho" appearance="fill">
               <mat-label>Pais</mat-label>

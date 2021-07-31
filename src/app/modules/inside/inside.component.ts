@@ -13,7 +13,7 @@ export class InsideComponent implements  OnInit {
 
   send: any= false;
   receiv: any = true;
-  newmsj: boolean = false;
+  newmsj: any = false;
 
   constructor() { }
 
@@ -23,25 +23,29 @@ export class InsideComponent implements  OnInit {
   showsend(enviar: any){
     let r=new Map(Object.entries(enviar));
     this.send = r.get('send');
-    console.log(this.send);
     this.receiv = r.get('receiv');
+    this.newmsj = r.get('newmsj');
+
+  }
+  showreceived(recibir: any){
+    let r=new Map(Object.entries(recibir));
+    this.send = r.get('send');
+    this.receiv = r.get('receiv');
+    this.newmsj = r.get('newmsj');
+
+
+  }
+
+  shownew(nuevo: any){
+    let r=new Map(Object.entries(nuevo));
+    this.send = r.get('send');
+    this.receiv = r.get('receiv');
+    this.newmsj = r.get('newmsj');
+    console.log(this.newmsj)
+
 
   }
 
 
 
-
 }
-
-/* send(){
-  this.sended = true;
-  this.received = false;
-  this.newmsj = false;
-}
-
-reciv(){
-  this.sended = false;
-  this.received = true;
-  this.newmsj = false;
-}
- */

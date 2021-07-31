@@ -1,1 +1,44 @@
-<p>sended works!</p>
+
+<div class="container">
+  <DIV class="mensajes">
+    <div class="example-button-row">
+      <button (click)='received()' mat-raised-button color="accent">Recibidos</button>
+      <button  mat-raised-button  color="accent">Enviados</button>
+      <button (click)='newmsj()'  mat-raised-button color="accent">Nuevo</button>
+    </div>
+  </DIV>
+  <div class="contenido">
+
+      <div class="titlecontainer">
+        <textarea *ngIf="!isMobile()" class="form-control title acento remitente" id="Remitente" rows="3" readonly>Remitente</textarea>
+        <textarea *ngIf="!isMobile()" class="form-control title acento destinatario" id="Destinatario" rows="3" readonly>Destinatario</textarea>
+        <textarea *ngIf="!isMobile()" class="form-control title acento fecha" id="Fecha" rows="3" readonly>Fecha</textarea>
+        <textarea *ngIf="!isMobile()" class="form-control title mensaje acento mensaje" id="Mensaje" rows="5" readonly>Mensaje</textarea>
+      </div>
+      <div class="titlecontainer">
+        <textarea class="form-control title msj remitente" id="Remitente1" rows="3" readonly>Jose Perez</textarea>
+        <textarea class="form-control title msj destinatario" id="Destinatario1" rows="3" readonly>Juan Torres</textarea>
+        <textarea class="form-control title msj fecha" id="Fecha1" rows="3" readonly>14/04/2021</textarea>
+        <textarea
+        matInput
+        cdkTextareaAutosize
+        cdkAutosizeMinRows="1"
+        cdkAutosizeMaxRows="13"
+        class="form-control title msj mensaje" id="Mensaje1" readonly> mensaje enviado 1</textarea>
+
+      </div>
+      <div class="titlecontainer">
+        <textarea class="form-control title msj remitente" id="Remitente1" rows="3" readonly>Jose Perez</textarea>
+        <textarea class="form-control title msj destinatario" id="Destinatario1" rows="3" readonly>Juan Torres</textarea>
+        <textarea class="form-control title msj fecha" id="Fecha1" rows="3" readonly>14/04/2021</textarea>
+        <textarea
+        matInput
+        cdkTextareaAutosize
+        #autosize="cdkTextareaAutosize"
+        cdkAutosizeMinRows="1"
+        cdkAutosizeMaxRows="13"
+        class="form-control title msj mensaje" id="Mensaje1" readonly> mensaje enviado 2.</textarea>
+
+      </div>
+    </div>
+</div>

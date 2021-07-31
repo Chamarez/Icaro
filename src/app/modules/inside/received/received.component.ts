@@ -1,6 +1,5 @@
 import { EventEmitter, Input } from '@angular/core';
 import { Component, OnInit, Output } from '@angular/core';
-import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 
 
 @Component({
@@ -13,11 +12,20 @@ export class ReceivedComponent implements OnInit {
   sen  =
     {
       send: true,
-      receiv: false
+      receiv: false,
+      newmsj: false,
+    };
+
+    env  =
+    {
+      send: false,
+      receiv: false,
+      newmsj: true
     };
 
 
     @Output() enviar: EventEmitter<any> =  new EventEmitter<any>();
+    @Output() nuevo: EventEmitter<any> =  new EventEmitter<any>();
 
   constructor() {
 
@@ -44,6 +52,12 @@ export class ReceivedComponent implements OnInit {
       this.enviar.emit(this.sen);
 
   }
+    newmsj(){
+
+      this.env
+      this.nuevo.emit(this.env);
+
+}
 
 
 

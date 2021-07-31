@@ -1,0 +1,48 @@
+.composeBG {
+  color: #ccc9dc;
+  min-height: 77.7vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.compose__container--BG {
+  margin: 3rem;
+  background: rgba(33, 33, 33, 0.35);
+  box-shadow: 0 8px 10px 0 rgba(33, 33, 33, 0.8);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border-radius: 10px;
+
+}
+
+.compose__container {
+  display: flex;
+  flex-direction: column;
+  padding: 3rem;
+  &--item {
+    padding: 1rem;
+  }
+}
+
+.msj{
+
+width: 100%;
+height: 100%;
+}
+
+.label{
+  color:#ccc9dc
+  }
+
+  textarea{
+    color:#fff
+
+  }
+  input{
+    color:#fff
+
+  }
+H2{
+  color: rgb(255, 106, 0);
+}

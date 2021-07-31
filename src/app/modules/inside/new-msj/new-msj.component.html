@@ -1,0 +1,48 @@
+<button (click)='receiv()' mat-raised-button  color="accent">recibido</button>
+<div class="composeBG">
+  <div class="compose__container--BG compose__container">
+    <h2 class="compose__text">Nuevo mensaje</h2>
+    <form
+      class="form__compose__container"
+      autocomplete="nope"
+      [formGroup]="composeForm"
+      (ngSubmit)="onSubmit()"
+    >
+      <mat-form-field class="compose__container--item" appearance="outline">
+        <mat-label class="label">Destinatario</mat-label>
+        <input
+          matInput
+          formControlName="destinatario"
+          placeholder="Ingrese su destinatario"
+        />
+      </mat-form-field>
+
+      <mat-form-field class="compose__container--item msj" appearance="outline">
+        <mat-label class="label">Mensaje</mat-label>
+        <textarea
+        matInput
+        cdkTextareaAutosize
+        #autosize="cdkTextareaAutosize"
+        cdkAutosizeMinRows="10"
+        cdkAutosizeMaxRows="13"
+        formControlName="mensaje"
+        placeholder="Ingrese su mensaje"
+        maxlength="140"
+
+        ></textarea>
+        <mat-hint class="label"> Max 140 caracteres </mat-hint>
+      </mat-form-field>
+
+      <div class="compose__container--btn">
+        <button
+          mat-flat-button
+          [ngStyle]="{ color: '#CCC9DC' }"
+          type="submit"
+          [disabled]="!composeForm.valid"
+        >
+          Enviar mensaje
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

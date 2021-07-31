@@ -4,9 +4,6 @@
 
 </div>
 
-<!-- <app-received
-(enviar)="showenviar($event)"
-></app-received> -->
 
 
 <div class="main">
@@ -15,9 +12,9 @@
 
 
 
-    <app-received *ngIf="receiv" (enviar)="showsend($event)"></app-received>
-    <app-sended *ngIf='send'></app-sended>
-
+    <app-received *ngIf="receiv" (enviar)="showsend($event)" (nuevo)="shownew($event)"></app-received>
+    <app-sended *ngIf='send' (recibir)="showreceived($event)" (nuevo)="shownew($event)" ></app-sended>
+    <app-new-msj *ngIf='newmsj' (recibir)="showreceived($event)"></app-new-msj>
   </div>
 
 </div>

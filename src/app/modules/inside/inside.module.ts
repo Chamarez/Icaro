@@ -7,6 +7,7 @@ import { SendedComponent } from './sended/sended.component';
 import { HeaderModule } from '../header/header.module';
 import { InsideComponent } from './inside.component';
 import { InsideRoutingModule } from './inside-routing.module';
+import { NewMsjComponent } from './new-msj/new-msj.component';
 
 
 
@@ -15,6 +16,7 @@ import { InsideRoutingModule } from './inside-routing.module';
     ReceivedComponent,
     SendedComponent,
     InsideComponent,
+    NewMsjComponent,
 
   ],
   imports: [
