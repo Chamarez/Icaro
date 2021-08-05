@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
+
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -10,27 +11,15 @@ export class RegisterComponent {
 
   constructor(private fb: FormBuilder) {
     this.form = this.fb.group({
-      usuario: ['', Validators.required],
-      password: ['', Validators.required]
+      user: ['', [Validators.required]],
+      password: ['',[Validators.required]],
+      name: ['',[Validators.required]],
+      lastname: ['',[Validators.required]],
+      passwordconfirm: ['',[Validators.required]],
 
 
-    })
-  }
-
-
-
-  private buildForm() {
-    this.form = new FormGroup({
-      apellido: new FormControl('', [Validators.required]),
-      nombre: new FormControl('', [Validators.required]),
-      usuario: new FormControl('', [Validators.required]),
-      password: new FormControl('', [Validators.required]),
-      cpasword: new FormControl('', [Validators.required]),
     });
-    this.form.valueChanges
-    .subscribe(value => {
-      console.log(value);
-    });
+
 
 
   }
@@ -43,4 +32,9 @@ export class RegisterComponent {
         (navigator.userAgent.match(/iPad/i)) ||
         (navigator.userAgent.match(/BlackBerry/i))
         );}
+
+
+        onSubmit() {
+          console.log('Your message : ', this.form.value);
+        }
 }

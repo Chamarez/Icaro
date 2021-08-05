@@ -17,7 +17,8 @@ import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatSelectModule} from '@angular/material/select';
 import {MatIconModule} from '@angular/material/icon';
-import { HeaderModule } from '../modules/header/header.module';
+import { HttpClientModule } from '@angular/common/http';
+
 
 
 const modules = [
@@ -35,6 +36,7 @@ const modules = [
   MatCardModule,
   MatSelectModule,
   MatGridListModule,
+  HttpClientModule
   ]
 
 @NgModule({

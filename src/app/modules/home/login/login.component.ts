@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
+import {AuthService} from '../../../auth/auth.service'
 
 @Component({
   selector: 'app-login',
@@ -10,11 +11,12 @@ import { Router } from '@angular/router';
 })
 
 export class LoginComponent implements OnInit {
+
   form: FormGroup;
   loading = false;
   user= false;
 
-  constructor(private fb: FormBuilder, private _snackBar: MatSnackBar, private router: Router) {
+  constructor(private authSvc: AuthService, private fb: FormBuilder, private _snackBar: MatSnackBar, private router: Router) {
     this.form = this.fb.group({
       usuario: ['', Validators.required],
       password: ['', Validators.required]
@@ -24,7 +26,12 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    const userData={
+      username:"a@gmail.com",
+      password:"123456"
 
+  };
+    this.authSvc.login(userData).subscribe((res)=>console.log('login'));
   }
   ingresar() {
     const usuario = this.form.value.usuario;
@@ -68,6 +75,10 @@ export class LoginComponent implements OnInit {
         (navigator.userAgent.match(/iPad/i)) ||
         (navigator.userAgent.match(/BlackBerry/i))
         );}
+
+
+
+
 }
 
 

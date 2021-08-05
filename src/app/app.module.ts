@@ -11,7 +11,7 @@ import { InsideModule } from './modules/inside/inside.module';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,
@@ -20,7 +20,8 @@ import { InsideModule } from './modules/inside/inside.module';
     SharedModule,
     HeaderModule,
     InsideModule,
-    HomeModule
+    HomeModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -8,51 +8,45 @@
       <div class="body">
         <div class="formcontainer">
           <img src="../../../assets/usuario.png" alt="ImagenUser" width="50%" />
-          <form [formGroup]="form">
+          <form [formGroup]="form"
+          (ngSubmit)="onSubmit()"
+          >
+
+
             <mat-form-field class="ancho" appearance="fill" >
               <mat-label>Apellido</mat-label>
               <input matInput
-              formControlName="apellido"
+              formControlName='lastname'
               placeholder="Ingrese su apellido"/>
             </mat-form-field>
+
+
             <mat-form-field class="ancho" appearance="fill">
               <mat-label>Nombre</mat-label>
               <input matInput
-              formControlName="nombre"
+              formControlName='name'
               placeholder="Ingrese su nombre"/>
             </mat-form-field>
+
             <mat-form-field class="ancho" appearance="fill">
               <mat-label>Nombre de Usuario</mat-label>
               <input matInput
-              formControlName="usuario"
+              formControlName='user'
               placeholder="Ingrese su nombre de usuario"/>
             </mat-form-field>
             <mat-form-field class="ancho" appearance="fill">
               <mat-label>Contraseña</mat-label>
               <input matInput
-              formControlName="password"
+              formControlName='password'
               placeholder="Ingrese su password" />
             </mat-form-field>
             <mat-form-field class="ancho" appearance="fill">
               <mat-label>Confirmar contraseña</mat-label>
               <input matInput
-              formControlName="cpasword"
+              formControlName='passwordconfirm'
               placeholder="reingrese su password" />
             </mat-form-field>
-            <mat-form-field class="ancho" appearance="fill">
-              <mat-label>Pais</mat-label>
-              <mat-select>
-                <mat-option value="one">First option</mat-option>
-                <mat-option value="two">Second option</mat-option>
-              </mat-select>
-            </mat-form-field>
-            <mat-form-field class="ancho" appearance="fill">
-              <mat-label>Ciudad</mat-label>
-              <mat-select>
-                <mat-option value="one">First option</mat-option>
-                <mat-option value="two">Second option</mat-option>
-              </mat-select>
-            </mat-form-field>
+
 
             <button
             type="submit"
