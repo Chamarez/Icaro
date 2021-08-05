@@ -26,19 +26,35 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    const userData={
+/*     const userData={
       username:"a@gmail.com",
       password:"123456"
 
   };
-    this.authSvc.login(userData).subscribe((res)=>console.log('login'));
+    this.authSvc.login(userData).subscribe((res)=>console.log('login')); */
   }
   ingresar() {
     const usuario = this.form.value.usuario;
     const password = this.form.value.password;
-    console.log(usuario);
-    console.log(password);
-    if(usuario=="icaro" && password=="icaro"){
+    const userData = {
+      username:usuario,
+      password:password
+    }
+    this.authSvc.login(userData).subscribe((res)=>
+    { if(res){
+      this.router.navigate(['inside']);
+
+    }
+
+
+    }
+    );
+
+
+
+
+
+    /* if(usuario=="icaro" && password=="icaro"){
       this.user = true
       console.log(this.user)
       this.fakeLoading()
@@ -47,7 +63,7 @@ export class LoginComponent implements OnInit {
       //mensaje de error
       this.error();
       this.form.reset();
-    }
+    } */
   }
 
   error(){
