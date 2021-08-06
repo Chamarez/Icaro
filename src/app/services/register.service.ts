@@ -15,7 +15,6 @@ export class RegisterService {
 
   register(regData: UserRegister):Observable<any>{
     return this.http
-    .post(`${environment.API_URL}/users`, regData)/* .pipe(
-
+    .post(`${environment.API_URL}/users`, regData)
 }
 }
