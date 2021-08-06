@@ -9,3 +9,14 @@ export interface UserResponse{
 
 
 }
+export interface registerOk{
+}
+
+export interface UserRegister{
+  username:string,
+  password:string,
+  role: string,
+  country: string,
+  city: string,
+
+}

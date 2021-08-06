@@ -5,14 +5,14 @@ import { environment } from 'src/environments/environment';
 import { UserResponse, User } from '../shared/models/user.interface';
 import {catchError, map} from 'rxjs/operators';
 import { JwtHelperService } from '@auth0/angular-jwt';
-
+import { Router } from '@angular/router';
 const helper = new JwtHelperService();
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
   private loggedIn = new BehaviorSubject<boolean>(false)
-  constructor(private http:HttpClient){
+  constructor(private http:HttpClient, private router: Router){
       this.checkToken();
 
   }
@@ -36,6 +36,7 @@ export class AuthService {
   logout():void{
     localStorage.removeItem('token');
     this.loggedIn.next(false);
+    this.router.navigate(['/login'])
 
   }
 
@@ -57,7 +58,7 @@ export class AuthService {
     localStorage.setItem('token', token);
   }
   private handleError(err: { messagge: any; }): Observable<never> {
-    let errorMessage = 'an error ocurred retriving data';
+    let errorMessage = 'an error ocurred registering data';
     if(err){
         errorMessage= `error: code ${err.messagge}`;
 

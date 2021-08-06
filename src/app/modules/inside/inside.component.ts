@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
+import { CheckLoginGuard } from 'src/app/shared/guard/check-login.guard';
 import { SendedComponent } from './sended/sended.component';
 
 @Component({
@@ -15,10 +16,9 @@ export class InsideComponent implements  OnInit {
   receiv: any = true;
   newmsj: any = false;
 
-  constructor() { }
+  constructor( ) { }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   showsend(enviar: any){
     let r=new Map(Object.entries(enviar));

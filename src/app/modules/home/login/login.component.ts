@@ -20,18 +20,11 @@ export class LoginComponent implements OnInit {
     this.form = this.fb.group({
       usuario: ['', Validators.required],
       password: ['', Validators.required]
-
-
     })
   }
 
   ngOnInit(): void {
-/*     const userData={
-      username:"a@gmail.com",
-      password:"123456"
 
-  };
-    this.authSvc.login(userData).subscribe((res)=>console.log('login')); */
   }
   ingresar() {
     const usuario = this.form.value.usuario;
@@ -43,27 +36,7 @@ export class LoginComponent implements OnInit {
     this.authSvc.login(userData).subscribe((res)=>
     { if(res){
       this.router.navigate(['inside']);
-
-    }
-
-
-    }
-    );
-
-
-
-
-
-    /* if(usuario=="icaro" && password=="icaro"){
-      this.user = true
-      console.log(this.user)
-      this.fakeLoading()
-      //redirecciono
-    }else{
-      //mensaje de error
-      this.error();
-      this.form.reset();
-    } */
+    }});
   }
 
   error(){
@@ -71,15 +44,7 @@ export class LoginComponent implements OnInit {
       duration: 5000,
       horizontalPosition: "center",
       verticalPosition: 'bottom'
-
     })
-  }
-  fakeLoading(){
-    this.loading= true;
-    setTimeout(()=>{
-      //lo redireccionamos
-    this.router.navigate(['inside'])   }, 1500);
-    return true;
   }
 
   isMobile(){
@@ -91,10 +56,6 @@ export class LoginComponent implements OnInit {
         (navigator.userAgent.match(/iPad/i)) ||
         (navigator.userAgent.match(/BlackBerry/i))
         );}
-
-
-
-
 }
 
 

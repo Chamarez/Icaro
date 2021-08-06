@@ -8,9 +8,8 @@
       <div class="body">
         <div class="formcontainer">
           <img src="../../../assets/usuario.png" alt="ImagenUser" width="50%" />
-          <form [formGroup]="form"
-          (ngSubmit)="onSubmit()"
-          >
+          <form [formGroup]='form' (ngSubmit)="onSubmit()">
+
 
 
             <mat-form-field class="ancho" appearance="fill" >
@@ -28,18 +27,21 @@
               placeholder="Ingrese su nombre"/>
             </mat-form-field>
 
+
             <mat-form-field class="ancho" appearance="fill">
-              <mat-label>Nombre de Usuario</mat-label>
+              <mat-label>Nombre de Usuario | Email</mat-label>
               <input matInput
-              formControlName='user'
-              placeholder="Ingrese su nombre de usuario"/>
+              formControlName='username'
+              placeholder="Debe ingresar un email valido"/>
             </mat-form-field>
+
             <mat-form-field class="ancho" appearance="fill">
               <mat-label>Contraseña</mat-label>
               <input matInput
               formControlName='password'
               placeholder="Ingrese su password" />
             </mat-form-field>
+
             <mat-form-field class="ancho" appearance="fill">
               <mat-label>Confirmar contraseña</mat-label>
               <input matInput
@@ -47,6 +49,15 @@
               placeholder="reingrese su password" />
             </mat-form-field>
 
+            <mat-form-field class="ancho" appearance="fill">
+              <mat-label>Pais</mat-label>
+              <input matInput autocomplete="off" formControlName="country" />
+            </mat-form-field>
+
+            <mat-form-field class="ancho" appearance="fill">
+              <mat-label>Ciudad</mat-label>
+              <input matInput autocomplete="off" formControlName="city"/>
+            </mat-form-field>
 
             <button
             type="submit"

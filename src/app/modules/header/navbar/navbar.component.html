@@ -69,15 +69,25 @@
           <ul class="navbar-nav ml-auto">
             <mat-toolbar color="primary" class="toolbar">
                 <span class="example-spacer"></span>
-                <button (click)="navegarHaciaLogin()" mat-raised-button color="primary" class="example-icon login material-cust-large-button " aria-label="Example icon-button with heart icon">
+                <button *ngIf="!isLogged; else viewLogout" (click)="navegarHaciaLogin()" mat-raised-button color="primary" class="example-icon login material-cust-large-button " aria-label="Example icon-button with heart icon">
                   <p class="navigate">Login</p>
                 </button>
-                <button (click)="navegarHaciaRegistro()" mat-raised-button color="primary" class="example-icon registrar material-cust-large-button " aria-label="Example icon-button with heart icon" >
+                <button *ngIf="!isLogged" (click)="navegarHaciaRegistro()" mat-raised-button color="primary" class="example-icon registrar material-cust-large-button " aria-label="Example icon-button with heart icon" >
                   <p class="navigate">Register</p>
                 </button>
-                <button (click)="navegarHaciaHome()" mat-icon-button class="example-icon " aria-label="Example icon-button with share icon">
+
+                <ng-template #viewLogout>
+                  <button (click)="navegarHaciaMensajes()" mat-raised-button color="primary" class="example-icon registrar material-cust-large-button " aria-label="Example icon-button with heart icon" >
+                    <p class="navigate">Mensajes</p>
+                  </button>
+                  <button  (click)="logOut()"  mat-raised-button color="primary" class="example-icon registrar material-cust-large-button " aria-label="Example icon-button with heart icon" >
+                    <p class="navigate">Logout</p>
+                  </button>
+                      <button (click)="logOut()" mat-icon-button class="example-icon " aria-label="Example icon-button with share icon">
                   <mat-icon>home</mat-icon>
                 </button>
+
+              </ng-template>
               </mat-toolbar>
 
           </ul>
