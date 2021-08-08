@@ -1,4 +1,7 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { EventEmitter, Input, Component, OnInit, Output, AfterViewInit, ViewChild } from '@angular/core';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatTableDataSource } from '@angular/material/table';
+import { MessaggesService } from 'src/app/services/messagges.service';
 
 @Component({
   selector: 'app-sended',
@@ -6,6 +9,12 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
   styleUrls: ['./sended.component.scss']
 })
 export class SendedComponent implements OnInit {
+  count: number = 0;
+  msg: any = [];
+  usuarioMostrar:any=[];
+  displayedColumns: string[] = ['id', 'addressee', 'msjs', 'date'];
+  dataSource!:MatTableDataSource<any>;
+
   rec  =
   {
     send: false,
@@ -19,14 +28,27 @@ export class SendedComponent implements OnInit {
     newmsj: true
   };
 
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
 
   @Output() nuevo: EventEmitter<any> =  new EventEmitter<any>();
 
   @Output() recibir: EventEmitter<any> =  new EventEmitter<any>();
 
-  constructor() { }
+  constructor(private sendSvc: MessaggesService) { }
 
   ngOnInit(): void {
+    this.sendSvc.sendMessagges().subscribe((data) =>{
+      this.msg = data;
+
+      for (var msg of this.msg) {
+        this.count = this.count + 1;
+        msg.id = this.count;
+   }
+      this.dataSource =  new MatTableDataSource(this.msg);
+      this.dataSource.paginator = this.paginator;
+
+    });
+
   }
   received(){
     this.rec

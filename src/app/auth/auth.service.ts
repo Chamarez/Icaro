@@ -11,6 +11,8 @@ const helper = new JwtHelperService();
   providedIn: 'root'
 })
 export class AuthService {
+
+
   private loggedIn = new BehaviorSubject<boolean>(false)
   constructor(private http:HttpClient, private router: Router){
       this.checkToken();
@@ -28,6 +30,11 @@ export class AuthService {
       map((res:UserResponse)=>{
         this.saveToken(res.token);
         this.loggedIn.next(true);
+        ///save username in local storage
+        this.user(authData.username);
+        ///save username in variable
+        const userna =  authData.username
+        alert(userna);
         return res;
       }),
       catchError((err)=>this.handleError(err))
@@ -56,6 +63,7 @@ export class AuthService {
   }
   private saveToken(token:string):void{
     localStorage.setItem('token', token);
+
   }
   private handleError(err: { messagge: any; }): Observable<never> {
     let errorMessage = 'an error ocurred registering data';
@@ -66,6 +74,11 @@ export class AuthService {
     }
     window.alert(errorMessage);
     return throwError(errorMessage);
+  }
+
+  user(username: string){
+    localStorage.setItem('username', username);
+
   }
 
 }

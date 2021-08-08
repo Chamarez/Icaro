@@ -1,13 +1,57 @@
 
-<div class="container">
-  <DIV class="mensajes">
     <div class="example-button-row">
       <button (click)='received()' mat-raised-button color="accent">Recibidos</button>
       <button  mat-raised-button  color="accent">Enviados</button>
       <button (click)='newmsj()'  mat-raised-button color="accent">Nuevo</button>
     </div>
-  </DIV>
-  <div class="contenido">
+
+  <div class="mat-elevation-z8">
+    <table class="container" mat-table [dataSource]="dataSource">
+
+      <!-- Position Column -->
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef> No. </th>
+        <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+      </ng-container>
+      <!-- Name Column -->
+      <ng-container matColumnDef="addressee">
+        <th mat-header-cell *matHeaderCellDef> addressee </th>
+        <td mat-cell *matCellDef="let element"> {{element.addressee}} </td>
+      </ng-container>
+
+      <!-- Weight Column -->
+      <ng-container matColumnDef="msjs">
+        <th mat-header-cell *matHeaderCellDef> msjs </th>
+        <td mat-cell *matCellDef="let element"> {{element.msjs}} </td>
+      </ng-container>
+
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="date">
+        <th mat-header-cell *matHeaderCellDef> date </th>
+        <td mat-cell *matCellDef="let element"> {{element.date | date:'shortDate'}} </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+
+    <mat-paginator class="container2"
+                   [length]="100"
+                   [pageSize]="5"
+                   [pageSizeOptions]="[5, 10, 20]"
+                   showFirstLastButtons
+                   aria-label="Select page of periodic elements">
+    </mat-paginator>
+  </div>
+
+
+
+
+
+
+
+
+  <!-- <div class="contenido">
 
       <div class="titlecontainer">
         <textarea *ngIf="!isMobile()" class="form-control title acento remitente" id="Remitente" rows="3" readonly>Remitente</textarea>
@@ -42,3 +86,4 @@
       </div>
     </div>
 </div>
+ -->
