@@ -20,6 +20,7 @@ import {MatIconModule} from '@angular/material/icon';
 import { HttpClientModule } from '@angular/common/http';
 import {MatTableModule} from '@angular/material/table';
 import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatDialogModule} from '@angular/material/dialog';
 
 
 const modules = [
@@ -40,6 +41,7 @@ const modules = [
   HttpClientModule,
   MatTableModule,
   MatPaginatorModule,
+  MatDialogModule
 
   ]
 

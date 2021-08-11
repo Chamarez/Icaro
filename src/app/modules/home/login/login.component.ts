@@ -25,7 +25,8 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
 
-  }
+
+}
   ingresar() {
     const usuario= this.form.value.usuario;
     const password = this.form.value.password;
@@ -36,7 +37,8 @@ export class LoginComponent implements OnInit {
     this.authSvc.login(userData).subscribe((res)=>
     { if(res){
       this.router.navigate(['inside']);
-    }});
+    }
+  });
   }
 
   error(){

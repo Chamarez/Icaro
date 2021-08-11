@@ -6,6 +6,7 @@ import { UserResponse, User } from '../shared/models/user.interface';
 import {catchError, map} from 'rxjs/operators';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
 const helper = new JwtHelperService();
 @Injectable({
   providedIn: 'root'
@@ -14,7 +15,7 @@ export class AuthService {
 
 
   private loggedIn = new BehaviorSubject<boolean>(false)
-  constructor(private http:HttpClient, private router: Router){
+  constructor(private http:HttpClient, private router: Router, private _snackBar: MatSnackBar){
       this.checkToken();
 
   }
@@ -27,15 +28,14 @@ export class AuthService {
     return this.http
     .post<UserResponse>(`${environment.API_URL}/auth/login`, authData)
     .pipe(
-      map((res:UserResponse)=>{
+map((res:UserResponse)=>{
         this.saveToken(res.token);
         this.loggedIn.next(true);
         ///save username in local storage
         this.user(authData.username);
         ///save username in variable
-        const userna =  authData.username
-        alert(userna);
-        return res;
+/*         const userna =  authData.username
+ */      return res;
       }),
       catchError((err)=>this.handleError(err))
       );
@@ -72,13 +72,25 @@ export class AuthService {
 
 
     }
-    window.alert(errorMessage);
-    return throwError(errorMessage);
+    this.error()
+
+      return throwError(errorMessage);
   }
 
   user(username: string){
     localStorage.setItem('username', username);
 
   }
+
+
+
+  error(){
+    this._snackBar.open('Usuario o Pasword ingresados son invalidos', '',{
+      duration: 5000,
+      horizontalPosition: "center",
+      verticalPosition: 'bottom'
+    })
+  }
+
 
 }

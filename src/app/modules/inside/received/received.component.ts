@@ -1,8 +1,11 @@
+import { HttpErrorResponse } from '@angular/common/http';
+import { variable } from '@angular/compiler/src/output/output_ast';
 import { EventEmitter, Input, Component, OnInit, Output, AfterViewInit, ViewChild } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { MessaggesService } from 'src/app/services/messagges.service';
-
+import { ConfirmDialogComponent } from '../confirmDialog/confirmDialog.component';
 
 const user = localStorage.getItem('username');
 
@@ -17,7 +20,6 @@ export class ReceivedComponent implements OnInit {
   usuarioMostrar:any=[];
   displayedColumns: string[] = ['id', 'sender', 'msjs', 'date'];
   dataSource!:MatTableDataSource<any>;
-
 
   sen  =
     {
@@ -37,7 +39,9 @@ export class ReceivedComponent implements OnInit {
 
     @Output() enviar: EventEmitter<any> =  new EventEmitter<any>();
     @Output() nuevo: EventEmitter<any> =  new EventEmitter<any>();
-  constructor(private receivSvc: MessaggesService) {
+
+
+  constructor(private receivSvc: MessaggesService, public dialog: MatDialog) {
 
   }
 
@@ -45,11 +49,20 @@ export class ReceivedComponent implements OnInit {
 
     this.receivSvc.receivMessagges().subscribe((data) =>{
       this.msg = data;
+      ///  for invert numbers
+      var arraylegth = this.msg.length
+       for (var msg of this.msg) {
+//// Numbers inverted
+          msg.id = arraylegth;
+          arraylegth = arraylegth -1
 
-      for (var msg of this.msg) {
-        this.count = this.count + 1;
-        msg.id = this.count;
+/* if i want diferent order
+this.count = this.count + 1;
+msg.id = this.count; */
+
+
    }
+      this.msg = this.msg.reverse()
       this.dataSource =  new MatTableDataSource(this.msg);
       this.dataSource.paginator = this.paginator;
 
@@ -81,7 +94,44 @@ export class ReceivedComponent implements OnInit {
 
 }
 
+deleteMsj(element:number){
+  const dialogRef = this.dialog.open(ConfirmDialogComponent, {
+    width: '40vh',
+    data: 'Esta seguro que desea eliminar'
+  });
+  dialogRef.afterClosed().subscribe(res =>{
+    console.log(res);
+    const msgToDelete = this.msg[element]
+    if(res){
+      alert('Mensaje eliminado')
+    //how press yes procede deletion
+      this.receivSvc.deleteMsgReceiv(msgToDelete.msjId).subscribe(()=>{console.log(msgToDelete.msjId)
+      }, (err: HttpErrorResponse)=> {
+        console.log(msgToDelete.msjId)
+        if (err.error instanceof Error) {
+          console.log("Client-side error");
+          console.log(err);
+        }else if (err.status == 200){
+          alert("Usuario creado");
 
+        }
+        else {
+          console.log(err.error.message);
+        }
+
+      }
+      )
+
+
+
+    }
+
+
+  })
 
 
 }
+
+
+}
+export class DialogContentExampleDialog {}

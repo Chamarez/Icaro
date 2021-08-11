@@ -8,6 +8,7 @@ import { HeaderModule } from '../header/header.module';
 import { InsideComponent } from './inside.component';
 import { InsideRoutingModule } from './inside-routing.module';
 import { NewMsjComponent } from './new-msj/new-msj.component';
+import { ConfirmDialogComponent } from './confirmDialog/confirmDialog.component';
 
 
 
@@ -17,6 +18,7 @@ import { NewMsjComponent } from './new-msj/new-msj.component';
     SendedComponent,
     InsideComponent,
     NewMsjComponent,
+    ConfirmDialogComponent
 
   ],
   imports: [
@@ -29,6 +31,8 @@ import { NewMsjComponent } from './new-msj/new-msj.component';
     ReceivedComponent,
     SendedComponent,
     InsideComponent,
+    NewMsjComponent,
+    ConfirmDialogComponent
   ]
 })
 export class InsideModule { }

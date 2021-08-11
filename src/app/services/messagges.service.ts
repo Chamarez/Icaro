@@ -36,5 +36,14 @@ postMessage(newmsg: NewMessage):Observable<any>{
   .post(`${environment.API_URL}/msj`, newmsg)
 }
 
+deleteMsgReceiv(msjId: number){
+  return this.http.patch(`${environment.API_URL}/msj/deletereceived/${msjId}`, "" )
+
+}
+
+deleteMsgSend(msjId: number){
+  return this.http.patch(`${environment.API_URL}/msj/deletesender/${msjId}`, "" )
+
+}
 
 }
