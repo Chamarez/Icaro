@@ -9,13 +9,15 @@ const user = localStorage.getItem('username');
   templateUrl: './new-msj.component.html',
   styleUrls: ['./new-msj.component.scss']
 })
-export class NewMsjComponent {
+export class NewMsjComponent  implements OnInit{
   sen  =
   {
     send: false,
     receiv: true,
     newmsj: false
   };
+  users:any = [];
+  arrayUsers:any = [];
   @Output() recibir: EventEmitter<any> =  new EventEmitter<any>();
 
   composeForm: FormGroup;
@@ -26,7 +28,9 @@ export class NewMsjComponent {
       mensaje: ['', [Validators.required]],
     });
   }
-
+  ngOnInit(){
+    this.getAllUsers()
+  }
   onSubmit() {
     const sender:any= user;
     const addressee = this.composeForm.value.destinatario;
@@ -40,7 +44,6 @@ export class NewMsjComponent {
     }
     this.msgSvc.postMessage(msjData).subscribe(()=>{console.log(msjData)
     }, (err: HttpErrorResponse)=> {
-      console.log(msjData)
       if (err.error instanceof Error) {
         console.log("Client-side error");
         console.log(err);
@@ -51,7 +54,7 @@ export class NewMsjComponent {
       else {
         console.log(err.error.message);
       }
-
+      this.receiv()
     }
     )}
 
@@ -62,7 +65,19 @@ export class NewMsjComponent {
 
 }
 
+getAllUsers(){
+  this.msgSvc.getAllUsers().subscribe((data:any) =>{
+  this.users = data
+  var arraylegth = this.users.length
 
+   for(let i=0; i<arraylegth ; i++){
+     this.arrayUsers[i] = this.users[i].username
+   }
+
+
+  });
+
+}
 
 }
 

@@ -7,45 +7,51 @@ import { NewMessage } from '../shared/models/messagges.interface';
 import { Observable } from 'rxjs';
 
 const helper = new JwtHelperService();
-const user = localStorage.getItem('username');
-const token:any = localStorage.getItem('token');
 
 
 @Injectable({
   providedIn: 'root'
 })
 export class MessaggesService {
+   user;
+   token:any;
 
   enviados: object | undefined;
-  constructor(private http:HttpClient, authSvc: AuthService) {
+  constructor(private http:HttpClient, authSvc: AuthService,) {
+    this.user = localStorage.getItem('username');
+    this.token = localStorage.getItem('token');
    }
 
   receivMessagges():Observable<any>{
-    return this.http.get(`${environment.API_URL}/msj/adressee/"${user}"`, {headers: new HttpHeaders({'auth': token})});
+    return this.http.get(`${environment.API_URL}/msj/adressee/"${this.user}"`, {headers: new HttpHeaders({'auth': this.token})});
     }
 
 
 
 sendMessagges(){
 
-    return this.http.get(`${environment.API_URL}/msj/sender/"${user}"`, {headers: new HttpHeaders({'auth': token})})
+    return this.http.get(`${environment.API_URL}/msj/sender/"${this.user}"`, {headers: new HttpHeaders({'auth': this.token})})
 
 }
 
 postMessage(newmsg: NewMessage):Observable<any>{
 
   return this.http
-  .post(`${environment.API_URL}/msj`, newmsg, {headers: new HttpHeaders({'auth': token})})
+  .post(`${environment.API_URL}/msj`, newmsg, {headers: new HttpHeaders({'auth': this.token})})
 }
 
 deleteMsgReceiv(msjId: number){
-  return this.http.patch(`${environment.API_URL}/msj/deletereceived/${msjId}`,"", {headers: new HttpHeaders({'auth': token})})
+  return this.http.patch(`${environment.API_URL}/msj/deletereceived/${msjId}`,"", {headers: new HttpHeaders({'auth': this.token})})
 
 }
 
 deleteMsgSend(msjId: number){
-  return this.http.patch(`${environment.API_URL}/msj/deletesender/${msjId}`, "",  {headers: new HttpHeaders({'auth': token})} )
+  return this.http.patch(`${environment.API_URL}/msj/deletesender/${msjId}`, "",  {headers: new HttpHeaders({'auth': this.token})} )
 
 }
+getAllUsers(){
 
+  return this.http.get(`${environment.API_URL}/users`, {headers: new HttpHeaders({'auth': this.token})})
+
+}
 }

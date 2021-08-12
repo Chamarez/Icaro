@@ -46,27 +46,28 @@ export class SendedComponent implements OnInit {
   constructor(private sendSvc: MessaggesService, public dialog: MatDialog) {}
 
   ngOnInit(): void {
-    this.sendSvc.sendMessagges().subscribe((data) => {
-      this.msg = data ? data : [];
-
-      ///  for invert numbers
-
-      var arraylegth = this.msg.length;
-
-      for (var msg of this.msg) {
-        //// Numbers invert
-        msg.id = arraylegth;
-        arraylegth = arraylegth - 1;
-
-        /* if i want diferent order
-        this.count = this.count + 1;
-        msg.id = this.count; */
-      }
-      this.msg = this.msg.reverse();
-      this.dataSource = new MatTableDataSource(this.msg);
-      this.dataSource.paginator = this.paginator;
-    });
+    this.showMsj()
   }
+
+showMsj(){
+  this.sendSvc.sendMessagges().subscribe((data) => {
+    this.msg = data;
+
+    ///  for invert numbers
+
+    var arraylegth = this.msg.length;
+
+    for (var msg of this.msg) {
+      //// Numbers invert
+      msg.id = arraylegth;
+      arraylegth = arraylegth - 1;
+    }
+    this.msg = this.msg.reverse();
+    this.dataSource = new MatTableDataSource(this.msg);
+    this.dataSource.paginator = this.paginator;
+  });
+}
+
   received() {
     this.rec;
     this.recibir.emit(this.rec);
@@ -101,7 +102,7 @@ export class SendedComponent implements OnInit {
         //how press yes procede deletion
         this.sendSvc.deleteMsgSend(msgToDelete.msjId).subscribe(
           () => {
-            console.log(msgToDelete.msjId);
+            this.showMsj()
           },
           (err: HttpErrorResponse) => {
             console.log(msgToDelete.msjId);

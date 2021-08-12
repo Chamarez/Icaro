@@ -1,7 +1,7 @@
-<button class="boton" (click)='receiv()' mat-raised-button  color="accent">recibido</button>
+<button class="boton" (click)='receiv()' mat-raised-button  color="accent">Received</button>
 <div class="composeBG">
   <div class="compose__container--BG compose__container">
-    <h2 class="compose__text">Nuevo mensaje</h2>
+    <h2 class="compose__text">New message</h2>
     <form
       class="form__compose__container"
       autocomplete="nope"
@@ -9,16 +9,17 @@
       (ngSubmit)="onSubmit()"
     >
       <mat-form-field class="compose__container--item" appearance="outline">
-        <mat-label class="label">Destinatario</mat-label>
-        <input
-          matInput
-          formControlName="destinatario"
-          placeholder="Ingrese su destinatario"
-        />
+        <mat-label class="label">Adresse</mat-label>
+
+
+        <mat-select formControlName="destinatario" multiple>
+            <mat-option *ngFor="let array of arrayUsers" [value]="array">{{array}}</mat-option>
+          </mat-select>
+
       </mat-form-field>
 
       <mat-form-field class="compose__container--item msj" appearance="outline">
-        <mat-label class="label">Mensaje</mat-label>
+        <mat-label class="label">Menssage</mat-label>
         <textarea
         matInput
         cdkTextareaAutosize
@@ -40,9 +41,11 @@
           type="submit"
           [disabled]="!composeForm.valid"
         >
-          Enviar mensaje
+          Send
         </button>
       </div>
     </form>
   </div>
 </div>
+
+

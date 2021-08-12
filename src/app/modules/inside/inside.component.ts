@@ -45,7 +45,6 @@ export class InsideComponent implements  OnInit {
     this.send = r.get('send');
     this.receiv = r.get('receiv');
     this.newmsj = r.get('newmsj');
-    console.log(this.newmsj)
 
 
   }

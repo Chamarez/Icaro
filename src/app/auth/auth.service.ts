@@ -52,11 +52,9 @@ map((res:UserResponse)=>{
     const userToken = localStorage.getItem('token');
     if(userToken != null){
     const isExpired = helper.isTokenExpired(userToken);
-    console.log('isExpired=>',  isExpired );
     isExpired ? this.logout() : this.loggedIn.next(true);
     } else{
     const isExpired = true;
-    console.log('isExpired=>',  isExpired );
 
     }
     // set userIsLoged = isExpired

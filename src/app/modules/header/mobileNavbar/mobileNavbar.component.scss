@@ -1,0 +1,22 @@
+
+.banner{
+  position:initial;
+  margin: 0%;
+  padding: 0%;
+  width: 100%;
+}
+.example-spacer {
+  flex: 1 1 auto;
+}
+ .toolbar{
+  margin: 0px;
+  padding: 0%;
+}
+
+.headerContainer{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 13.5%;
+  background-color:#3f51b5;
+}

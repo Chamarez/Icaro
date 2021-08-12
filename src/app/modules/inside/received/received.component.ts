@@ -6,8 +6,6 @@ import { MatTableDataSource } from '@angular/material/table';
 import { MessaggesService } from 'src/app/services/messagges.service';
 import { ConfirmDialogComponent } from '../confirmDialog/confirmDialog.component';
 
-const user = localStorage.getItem('username');
-const token:any = localStorage.getItem('token');
 
 
 @Component({
@@ -15,6 +13,7 @@ const token:any = localStorage.getItem('token');
   templateUrl: './received.component.html',
   styleUrls: ['./received.component.scss']
 })
+
 export class ReceivedComponent implements OnInit  {
   count: number = 0;
   msg: any = [{}];
@@ -46,31 +45,12 @@ export class ReceivedComponent implements OnInit  {
 
     }
     ngOnInit(){
+      this.showMsg()
     }
-    ngAfterContentInit(): void {
-                    ///lOAD MESSAGES
-                    this.receivSvc.receivMessagges().subscribe((data) =>{
-                      console.log("data es " + data)
-                      this.msg = data ;
-                      ///  for invert numbers
-                      var arraylegth = this.msg.length
-                      for (var msg of this.msg) {
-                        //// Numbers inverted
-                        msg.id = arraylegth;
-                        arraylegth = arraylegth -1
-                      }
-                      this.msg = this.msg.reverse()
-                      this.dataSource =  new MatTableDataSource(this.msg);
-                      this.dataSource.paginator = this.paginator;
 
-              });
-
-/*       this.showMsg(this.msg)
- */}
-showMsg(_msg:any){
+showMsg(){
               ///lOAD MESSAGES
               this.receivSvc.receivMessagges().subscribe((data) =>{
-                console.log("data es " + data)
                 this.msg = data ;
                 ///  for invert numbers
                 var arraylegth = this.msg.length
@@ -116,13 +96,13 @@ deleteMsj(element:number){
     console.log(res);
     const msgToDelete = this.msg[element-1]
 
-
     if(res){
 
 
         //how press yes procede deletion
         alert('Mensaje eliminado')
-        this.receivSvc.deleteMsgReceiv(msgToDelete.msjId).subscribe(()=>{console.log(msgToDelete.msjId)
+        this.receivSvc.deleteMsgReceiv(msgToDelete.msjId).subscribe(()=>{
+          this.showMsg()
         }, (err: HttpErrorResponse)=> {
           console.log(msgToDelete.msjId)
           if (err.error instanceof Error) {
