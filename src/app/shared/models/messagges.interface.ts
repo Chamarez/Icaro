@@ -1,15 +1,16 @@
 export interface ReceivedMesagges{
   sender: string,
   msjs: string,
-  date: Date
-
+  date: Date,
+  msjId:number
 }
 
 
 export interface SendedMessagges{
   addressee: string,
   msjs: string,
-  date: Date
+  date: Date,
+  msjId:number
 }
 
 export interface NewMessage{

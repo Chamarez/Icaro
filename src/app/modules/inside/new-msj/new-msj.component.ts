@@ -45,7 +45,7 @@ export class NewMsjComponent {
         console.log("Client-side error");
         console.log(err);
       }else if (err.status == 200){
-        alert("Usuario creado");
+        alert("Su mensaje fue enviado");
 
       }
       else {

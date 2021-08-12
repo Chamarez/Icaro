@@ -12,7 +12,8 @@ export class CheckLoginGuard implements CanActivate {
   canActivate():Observable<boolean>{
     return this.authSvc.isLogged.pipe(
       take(1),
-      map( (isLogged:boolean)=> !isLogged)
+    ///could be !isLogged
+      map( (isLogged:boolean)=> isLogged)
     )
   }
 

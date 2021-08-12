@@ -1,5 +1,5 @@
 <div class="example-button-row">
-  <button mat-raised-button color="accent">Recibidos</button>
+  <button  mat-raised-button color="accent">Recibidos</button>
   <button (click)='sended()' mat-raised-button  color="accent">Enviados</button>
   <button (click)='newmsj()'  mat-raised-button color="accent">Nuevo</button>
 </div>
@@ -45,7 +45,7 @@
   <mat-paginator class="container2"
                  [length]="100"
                  [pageSize]="5"
-                 [pageSizeOptions]="[5, 10, 20]"
+                 [pageSizeOptions]="[5, 10, 20, 30, 100]"
                  showFirstLastButtons
                  aria-label="Select page of periodic elements">
   </mat-paginator>

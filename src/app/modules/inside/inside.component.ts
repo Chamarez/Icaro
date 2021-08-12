@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
+import { Router } from '@angular/router';
 import { MessaggesService } from 'src/app/services/messagges.service';
 import { CheckLoginGuard } from 'src/app/shared/guard/check-login.guard';
 import { SendedComponent } from './sended/sended.component';
@@ -17,10 +18,10 @@ export class InsideComponent implements  OnInit {
   receiv: any = true;
   newmsj: any = false;
 
-  constructor( ) { }
+
+  constructor(private router: Router ) { }
 
   ngOnInit(): void {
-
   }
 
   showsend(enviar: any){

@@ -47,9 +47,10 @@ export class SendedComponent implements OnInit {
 
   ngOnInit(): void {
     this.sendSvc.sendMessagges().subscribe((data) => {
-      this.msg = data;
+      this.msg = data ? data : [];
 
       ///  for invert numbers
+
       var arraylegth = this.msg.length;
 
       for (var msg of this.msg) {
@@ -62,7 +63,6 @@ export class SendedComponent implements OnInit {
         msg.id = this.count; */
       }
       this.msg = this.msg.reverse();
-      console.log(this.msg);
       this.dataSource = new MatTableDataSource(this.msg);
       this.dataSource.paginator = this.paginator;
     });
@@ -70,8 +70,7 @@ export class SendedComponent implements OnInit {
   received() {
     this.rec;
     this.recibir.emit(this.rec);
-    console.log('enviadofunciona');
-  }
+    }
 
   newmsj() {
     this.env;
@@ -96,7 +95,7 @@ export class SendedComponent implements OnInit {
     });
     dialogRef.afterClosed().subscribe((res) => {
       console.log(res);
-      const msgToDelete = this.msg[element];
+      const msgToDelete = this.msg[element-1];
       if (res) {
         alert('Mensaje eliminado');
         //how press yes procede deletion
