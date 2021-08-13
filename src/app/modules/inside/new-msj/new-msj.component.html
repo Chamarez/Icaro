@@ -18,7 +18,7 @@
         <mat-label class="label">Adresse</mat-label>
 
 
-        <mat-select formControlName="destinatario" multiple>
+        <mat-select formControlName="destinatario" >
           <mat-option *ngFor="let array of arrayUsers" [value]="array">{{array}}</mat-option>
           </mat-select>
 

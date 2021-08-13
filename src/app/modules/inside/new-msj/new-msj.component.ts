@@ -10,6 +10,7 @@ const user = localStorage.getItem('username');
   styleUrls: ['./new-msj.component.scss']
 })
 export class NewMsjComponent  implements OnInit{
+
   sen  =
   {
     send: false,
