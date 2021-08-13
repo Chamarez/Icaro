@@ -42,6 +42,7 @@ map((res:UserResponse)=>{
   }
   logout():void{
     localStorage.removeItem('token');
+    localStorage.removeItem('username');
     this.loggedIn.next(false);
     this.router.navigate(['/login'])
 

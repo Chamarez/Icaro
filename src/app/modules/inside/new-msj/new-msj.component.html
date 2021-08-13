@@ -1,46 +1,52 @@
-<button class="boton" (click)='receiv()' mat-raised-button  color="accent">Received</button>
 <div class="composeBG">
   <div class="compose__container--BG compose__container">
-    <h2 class="compose__text">New message</h2>
-    <form
+    <div class="inbox">
+      <button class="boton" (click)='receiv()' mat-raised-button  color="accent">InBox</button>
+
+    </div>
+
+
+      <h2 class="compose__text">New message</h2>
+
+      <form
       class="form__compose__container"
       autocomplete="nope"
       [formGroup]="composeForm"
       (ngSubmit)="onSubmit()"
-    >
+      >
       <mat-form-field class="compose__container--item" appearance="outline">
         <mat-label class="label">Adresse</mat-label>
 
 
         <mat-select formControlName="destinatario" multiple>
-            <mat-option *ngFor="let array of arrayUsers" [value]="array">{{array}}</mat-option>
+          <mat-option *ngFor="let array of arrayUsers" [value]="array">{{array}}</mat-option>
           </mat-select>
 
-      </mat-form-field>
+        </mat-form-field>
 
-      <mat-form-field class="compose__container--item msj" appearance="outline">
-        <mat-label class="label">Menssage</mat-label>
-        <textarea
-        matInput
-        cdkTextareaAutosize
-        #autosize="cdkTextareaAutosize"
-        cdkAutosizeMinRows="10"
-        cdkAutosizeMaxRows="13"
-        formControlName="mensaje"
-        placeholder="Ingrese su mensaje"
-        maxlength="140"
+        <mat-form-field class="compose__container--item msj" appearance="outline">
+          <mat-label class="label">Menssage</mat-label>
+          <textarea
+          matInput
+          cdkTextareaAutosize
+          #autosize="cdkTextareaAutosize"
+          cdkAutosizeMinRows="10"
+          cdkAutosizeMaxRows="13"
+          formControlName="mensaje"
+          placeholder="Ingrese su mensaje"
+          maxlength="140"
 
-        ></textarea>
-        <mat-hint class="label"> Max 140 caracteres </mat-hint>
-      </mat-form-field>
+          ></textarea>
+          <mat-hint class="label"> Max 140 caracteres </mat-hint>
+        </mat-form-field>
 
-      <div class="compose__container--btn">
-        <button
+        <div class="compose__container--btn">
+          <button
           mat-flat-button
           [ngStyle]="{ color: '#CCC9DC' }"
           type="submit"
           [disabled]="!composeForm.valid"
-        >
+          >
           Send
         </button>
       </div>

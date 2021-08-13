@@ -25,7 +25,8 @@ export class SendedComponent implements OnInit {
   usuarioMostrar: any = [];
   displayedColumns: string[] = ['id', 'addressee', 'msjs', 'date'];
   dataSource!: MatTableDataSource<any>;
-
+  user:any;
+  token:any;
   rec = {
     send: false,
     receiv: true,
@@ -43,15 +44,19 @@ export class SendedComponent implements OnInit {
 
   @Output() recibir: EventEmitter<any> = new EventEmitter<any>();
 
-  constructor(private sendSvc: MessaggesService, public dialog: MatDialog) {}
-
-  ngOnInit(): void {
-    this.showMsj()
+  constructor(private sendSvc: MessaggesService, public dialog: MatDialog) {
   }
 
-showMsj(){
-  this.sendSvc.sendMessagges().subscribe((data) => {
-    this.msg = data;
+  ngOnInit(): void {
+    this.user = localStorage.getItem('username');
+    this.token = localStorage.getItem('token');
+    this.showMsj()
+    console.log()
+  }
+
+  showMsj(){
+    this.sendSvc.sendMessagges(this.user, this.token).subscribe((data) => {
+      this.msg = data;
 
     ///  for invert numbers
 
@@ -100,7 +105,7 @@ showMsj(){
       if (res) {
         alert('Mensaje eliminado');
         //how press yes procede deletion
-        this.sendSvc.deleteMsgSend(msgToDelete.msjId).subscribe(
+        this.sendSvc.deleteMsgSend(msgToDelete.msjId ,this.token).subscribe(
           () => {
             this.showMsj()
           },

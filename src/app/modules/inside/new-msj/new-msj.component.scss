@@ -1,5 +1,5 @@
 .composeBG {
-  color: #ccc9dc;
+  color: rgb(33, 33, 33);
   min-height: 77.7vh;
   display: flex;
   justify-content: center;
@@ -8,7 +8,7 @@
 
 .compose__container--BG {
   margin: 3rem;
-  background: rgba(33, 33, 33, 0.35);
+  background:rgba(255, 255, 255, 0.863);
   box-shadow: 0 8px 10px 0 rgba(33, 33, 33, 0.8);
   backdrop-filter: blur(5px);
   -webkit-backdrop-filter: blur(5px);
@@ -32,15 +32,15 @@ height: 100%;
 }
 
 .label{
-  color:#ccc9dc
+  color:rgb(33, 33, 33)
   }
 
   textarea{
-    color:#fff
+    color:rgb(33, 33, 33)
 
   }
   input{
-    color:#fff
+    color:rgb(33, 33, 33)
 
   }
 H2{
@@ -51,3 +51,5 @@ H2{
   width: 35%;
   outline: #f5f5f5c2 3px solid ;
 }
+
+

@@ -21,7 +21,7 @@ import { HttpClientModule } from '@angular/common/http';
 import {MatTableModule} from '@angular/material/table';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatDialogModule} from '@angular/material/dialog';
-
+import {MatMenuModule} from '@angular/material/menu';
 const modules = [
   CommonModule,
   MatSliderModule,
@@ -40,7 +40,8 @@ const modules = [
   HttpClientModule,
   MatTableModule,
   MatPaginatorModule,
-  MatDialogModule
+  MatDialogModule,
+  MatMenuModule
 
   ]
 

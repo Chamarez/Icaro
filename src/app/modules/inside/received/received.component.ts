@@ -20,7 +20,8 @@ export class ReceivedComponent implements OnInit  {
   usuarioMostrar:any=[];
   displayedColumns: string[] = ['id', 'sender', 'msjs', 'date'];
   dataSource!:MatTableDataSource<object>;
-
+  user:any;
+  token:any;
 
   sen  =
     {
@@ -42,15 +43,16 @@ export class ReceivedComponent implements OnInit  {
 
 
     constructor(private receivSvc: MessaggesService, public dialog: MatDialog) {
-
     }
     ngOnInit(){
+      this.user = localStorage.getItem('username');
+      this.token = localStorage.getItem('token');
       this.showMsg()
     }
 
-showMsg(){
+    showMsg(){
               ///lOAD MESSAGES
-              this.receivSvc.receivMessagges().subscribe((data) =>{
+              this.receivSvc.receivMessagges(this.user, this.token).subscribe((data) =>{
                 this.msg = data ;
                 ///  for invert numbers
                 var arraylegth = this.msg.length
@@ -101,7 +103,7 @@ deleteMsj(element:number){
 
         //how press yes procede deletion
         alert('Mensaje eliminado')
-        this.receivSvc.deleteMsgReceiv(msgToDelete.msjId).subscribe(()=>{
+        this.receivSvc.deleteMsgReceiv(msgToDelete.msjId, this.token).subscribe(()=>{
           this.showMsg()
         }, (err: HttpErrorResponse)=> {
           console.log(msgToDelete.msjId)

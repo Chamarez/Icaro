@@ -16,6 +16,8 @@ export class NewMsjComponent  implements OnInit{
     receiv: true,
     newmsj: false
   };
+  user:any;
+  token:any;
   users:any = [];
   arrayUsers:any = [];
   @Output() recibir: EventEmitter<any> =  new EventEmitter<any>();
@@ -29,10 +31,13 @@ export class NewMsjComponent  implements OnInit{
     });
   }
   ngOnInit(){
+    this.user = localStorage.getItem('username');
+    this.token = localStorage.getItem('token');
     this.getAllUsers()
+    console.log(this.user)
   }
   onSubmit() {
-    const sender:any= user;
+    const sender:any= this.user;
     const addressee = this.composeForm.value.destinatario;
     const msjs = this.composeForm.value.mensaje;
     const msjData = {
@@ -42,7 +47,7 @@ export class NewMsjComponent  implements OnInit{
 
 
     }
-    this.msgSvc.postMessage(msjData).subscribe(()=>{console.log(msjData)
+    this.msgSvc.postMessage(msjData, this.token).subscribe(()=>{console.log(msjData)
     }, (err: HttpErrorResponse)=> {
       if (err.error instanceof Error) {
         console.log("Client-side error");
@@ -66,7 +71,7 @@ export class NewMsjComponent  implements OnInit{
 }
 
 getAllUsers(){
-  this.msgSvc.getAllUsers().subscribe((data:any) =>{
+  this.msgSvc.getAllUsers(this.token).subscribe((data:any) =>{
   this.users = data
   var arraylegth = this.users.length
 
